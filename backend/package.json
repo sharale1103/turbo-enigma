@@ -3,16 +3,15 @@
   "version": "1.0.0",
   "main": "src/index.js",
   "scripts": {
-
-  "dev":"nodemon src/index.js"
-
+    "dev": "nodemon src/index.js"
   },
-  "keyword":[],
+  "keyword": [],
   "author": "Sarthak Harale",
   "type": "module",
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "bcrypt": "^5.1.1",
     "bcryptjs": "^3.0.2",
     "cloudinary": "^2.5.1",
     "cookie-parser": "^1.4.7",
