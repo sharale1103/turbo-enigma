@@ -1,10 +1,13 @@
 import User from "../models/user.model.js"
 import bcrypt from "bcrypt";
+import { generateToken } from "../lib/utils.js";
 export const signup = async (req,res)=>{
     
   const {fullName,email,password}= req.body
   try {
-    if(!fullName || !email || !p)
+    if(!fullName || !email || !password){
+      res.status(400).json({message:"fill all the inputs"});
+    }
      if (password.lenght<8) {
         return res.status(400).json({
           message:"password must be at least 8 characters"
@@ -21,12 +24,12 @@ const newUser = new User({
   password:hashedPassword
 })
        if (newUser){
-         generateToken(newUser.id,res)
+         generateToken(newUser._id,res)
          await newUser.save();
 
 
          return res.status(201).json({
-           _id:newUser._id,
+           _id: newUser._id,
            fullName:newUser.fullName,
            email:newUser.email,
            profilePic:newUser.profilePic,
